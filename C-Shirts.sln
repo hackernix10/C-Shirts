@@ -3,6 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C-Shirts", "C-Shirts\C-Shirts.csproj", "{8ACBF2D2-EDC7-4ADA-9A46-AEE0D7FE8345}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{21EC17E9-236A-4F3C-85DD-E239C7E64FA8}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -13,5 +18,7 @@ Global
 		{8ACBF2D2-EDC7-4ADA-9A46-AEE0D7FE8345}.Debug|x86.Build.0 = Debug|x86
 		{8ACBF2D2-EDC7-4ADA-9A46-AEE0D7FE8345}.Release|x86.ActiveCfg = Release|x86
 		{8ACBF2D2-EDC7-4ADA-9A46-AEE0D7FE8345}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 EndGlobal
