@@ -49,7 +49,4 @@ Conceptional class diagram
 
 #### Nancy
 
-(http://www.jhovgaard.com/from-aspnet-mvc-to-nancy-part-3/)[http://www.jhovgaard.com/from-aspnet-mvc-to-nancy-part-3/]
-
-
-
+[http://www.jhovgaard.com/from-aspnet-mvc-to-nancy-part-3/](http://www.jhovgaard.com/from-aspnet-mvc-to-nancy-part-3/)
