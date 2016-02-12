@@ -1,0 +1,28 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<CShirtsNet.Models.TShirt>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<form action="/create/" method="post">
+            <table>
+                <tr>
+                    <td>Id:</td>
+                    <td><input type="text" name="Id" value="@Model.Id" /></td>
+                </tr>
+                <tr>
+                    <td>Title:</td>
+                    <td><input type="text" name="Title" value="@Model.Title" /></td>
+                </tr>
+                <tr>
+                    <td>Content:</td>
+                    <td><input type="text" name="PrintTechnique" value="@Model.PrintTechnique"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" value="Add new"/></td>
+                </tr>
+            </table>
+        </form>
+	</body>
+</html>

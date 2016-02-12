@@ -59,15 +59,23 @@
     <Content Include="packages.config" />
     <Content Include="web.config" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Create.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modules\" />
     <Folder Include="Views\" />
     <Folder Include="Views\Home\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Admin\" />
+    <Folder Include="Views\Admin\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Modules\HomeModule.cs" />
     <Compile Include="Models\TShirt.cs" />
+    <Compile Include="Models\CreationTimeService.cs" />
+    <Compile Include="Views\Admin\Models\IndexModel.cs" />
+    <Compile Include="Modules\AdminModule.cs" />
+    <Compile Include="Models\Bootstrapper.cs" />
   </ItemGroup>
 </Project>

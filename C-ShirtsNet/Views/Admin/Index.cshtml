@@ -1,0 +1,20 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<CShirtsNet.Views.Admin.Models.IndexModel>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <h1>Welcome to the admin page</h1>
+    <table>
+        <tr>
+            <td>Creation date for WebApplicationService:</td>
+            <td>@Model.CreationDate</td>
+        </tr>
+        <tr>
+            <td>Total request on the service:</td>
+            <td>@Model.TotalRequests</td>
+        </tr>
+    </table>
+</body>
+</html>
