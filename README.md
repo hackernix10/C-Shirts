@@ -42,3 +42,14 @@ Customizable T-Shirts Dropshipping Platform
 Conceptional class diagram
 
 [class diagram]: http://s16.postimg.org/xs7z1xdmd/Screen_Shot_2016_02_10_at_15_53_01.png "Class Diagram"
+
+## Literature
+
+### Tutorials
+
+#### Nancy
+
+(http://www.jhovgaard.com/from-aspnet-mvc-to-nancy-part-3/)[http://www.jhovgaard.com/from-aspnet-mvc-to-nancy-part-3/]
+
+
+
