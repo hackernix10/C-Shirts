@@ -1,9 +1,23 @@
-﻿
-<html>
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<CShirtsNet.Models.TShirt>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<title></title>
 	</head>
 	<body>
-		<p>hello world</p>
+		<table>
+            <tr>
+                <td>Id:</td>
+                <td>@Model.Id</td>
+            </tr>
+            <tr>
+                <td>Title:</td>
+                <td>@Model.Title</td>
+            </tr>
+            <tr>
+                <td>print techn.:</td>
+                <td>@Model.PrintTechnique</td>
+            </tr>
+        </table>
 	</body>
 </html>

@@ -64,8 +64,10 @@
     <Folder Include="Modules\" />
     <Folder Include="Views\" />
     <Folder Include="Views\Home\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Modules\HomeModule.cs" />
+    <Compile Include="Models\TShirt.cs" />
   </ItemGroup>
 </Project>

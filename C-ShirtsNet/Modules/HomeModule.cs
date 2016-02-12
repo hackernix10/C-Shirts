@@ -1,14 +1,20 @@
 ﻿using System;
 using Nancy;
+using CShirtsNet.Models;
 
-namespace CShirtsNet
+namespace CShirtsNet.Modules
 {
 	public class HomeModule : NancyModule
 	{
 		public HomeModule ()
 		{
 			Get["/"] = parameters => {
-				return View["Index"];
+				TShirt tshirt = new TShirt();
+				tshirt.Id = 1;
+				tshirt.Title = "sample shirt";
+				tshirt.PrintTechnique = "screen";
+
+				return View["Index", tshirt];
 			};
 		}
 		public static void Main()
@@ -17,4 +23,3 @@ namespace CShirtsNet
 		}
 	}
 }
-
