@@ -48,9 +48,6 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="MyCouch.Net45">
-      <HintPath>..\packages\MyCouch.4.0.0\lib\net45\MyCouch.Net45.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -6,7 +6,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C-ShirtsNet", "C-ShirtsNet\C-ShirtsNet.csproj", "{D9179657-9978-42B2-B1F0-B1E4207E1762}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C-Shirts.Web", "C-ShirtsNet\C-Shirts.Web.csproj", "{D9179657-9978-42B2-B1F0-B1E4207E1762}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C-Shirts.Persistence", "Persistence\C-Shirts.Persistence.csproj", "{1EABBE1C-03DE-44EF-8A75-2324BB89EE4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,6 +16,10 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1EABBE1C-03DE-44EF-8A75-2324BB89EE4B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1EABBE1C-03DE-44EF-8A75-2324BB89EE4B}.Debug|x86.Build.0 = Debug|Any CPU
+		{1EABBE1C-03DE-44EF-8A75-2324BB89EE4B}.Release|x86.ActiveCfg = Release|Any CPU
+		{1EABBE1C-03DE-44EF-8A75-2324BB89EE4B}.Release|x86.Build.0 = Release|Any CPU
 		{D9179657-9978-42B2-B1F0-B1E4207E1762}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{D9179657-9978-42B2-B1F0-B1E4207E1762}.Debug|x86.Build.0 = Debug|Any CPU
 		{D9179657-9978-42B2-B1F0-B1E4207E1762}.Release|x86.ActiveCfg = Release|Any CPU
