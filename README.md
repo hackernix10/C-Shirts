@@ -29,8 +29,8 @@ Customizable T-Shirts Dropshipping Platform
 
 ### Persistence
 
-- O CouchDb
-- O MyCouch .NET
+- X CouchDb
+- X MyCouch .NET
 - O JSON.NET
 
 ### Testing
