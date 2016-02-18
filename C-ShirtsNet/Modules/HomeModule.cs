@@ -5,17 +5,35 @@ using Nancy.ModelBinding;
 
 namespace CShirtsNet.Modules
 {
+	using CShirts.Persistence.Models;
+
 	public class HomeModule : NancyModule
 	{
-		public HomeModule ()
+		public HomeModule (ITShirtRepository tshirtRepository)
 		{
+			
+			// global index view
 			Get["/"] = parameters => {
-				TShirt tshirt = new TShirt();
-				tshirt.Id = 1;
-				tshirt.Title = "sample shirt";
-				tshirt.PrintTechnique = "screen";
+				return View["Index"];
+			};
 
-				return View["Index", tshirt];
+			// return all tshirts
+			Get["/tshirts"] = parameters => {
+
+				// get "domain" obj
+				var tshirts = tshirtRepository.GetAll();
+
+				// TODO
+				// convert to view model
+				var tshirtsdto = new TShirtDTO();
+				tshirtsdto.Id = tshirts.Id; // use auto-mapper instead
+
+				// TODO
+				// convert to json
+				var tshirtsAsJson;
+
+				// return json
+				return tshirtsAsJson;
 			};
 
 			Get["/create/"] = parameters => {
@@ -27,7 +45,6 @@ namespace CShirtsNet.Modules
 				// Also, I can call the create view, once I remove all @Model statements.
 				// I just figured out, passing an empty instance of the model works
 				// http://www.jhovgaard.com/from-aspnet-mvc-to-nancy-part-2/
-				TShirt tshirt = new TShirt();
 
 				return View ["Create", tshirt];
 			};

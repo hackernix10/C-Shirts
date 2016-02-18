@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CShirtsNet.Models
+namespace CShirts.Persistence.Models
 {
 	public class TShirt
 	{
@@ -8,6 +8,12 @@ namespace CShirtsNet.Models
 		public string Title { get; set; }
 		public string PrintTechnique { get; set; }
 
+		public TShirt ()
+		{
+			
+		}
+
+		// persistence and business logic goes here
 	}
 }
 
