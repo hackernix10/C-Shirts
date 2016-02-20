@@ -1,4 +1,4 @@
-﻿# C-Shirts
+# C-Shirts
 
 ## Abstract
 
@@ -37,6 +37,35 @@ Customizable T-Shirts Dropshipping Platform
 
 - O xUnit.NET 1.9
 
+
+## CouchDb
+
+- Document based db, good for ddd, offline apps, provides well-performing scalability
+- HTTP-based
+
+### views
+
+for custom views, JS map functions are used, e.g.:
+
+	function(doc) {  
+	  if(doc.$doctype !== 'artist')
+	    return;
+
+	  emit(doc.name, doc.albums);
+	}
+
+Link views editor:
+[http://localhost:5984/_utils/database.html?cshirts/_temp_view](http://localhost:5984/_utils/database.html?cshirts/_temp_view)
+
+
+## Security
+
+**CouchDb**
+
+User: `sa`
+
+Password: `Pa$$w0rd`
+
 ### Class diagram
 
 Conceptional class diagram
@@ -47,6 +76,11 @@ Conceptional class diagram
 
 ### Tutorials
 
+#### CouchDb
+
+[http://danielwertheim.se/get-up-and-running-with-couchdb-and-c-using-mycouch-on-windows/](http://danielwertheim.se/get-up-and-running-with-couchdb-and-c-using-mycouch-on-windows/)
+
 #### Nancy
 
 [http://www.jhovgaard.com/from-aspnet-mvc-to-nancy-part-3/](http://www.jhovgaard.com/from-aspnet-mvc-to-nancy-part-3/)
+

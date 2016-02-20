@@ -7,13 +7,6 @@ namespace CShirts.Persistence.Models
 		public int Id { get; set; }
 		public string Title { get; set; }
 		public string PrintTechnique { get; set; }
-
-		public TShirt ()
-		{
-			
-		}
-
-		// persistence and business logic goes here
 	}
 }
 

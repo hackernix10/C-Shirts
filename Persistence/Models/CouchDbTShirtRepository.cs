@@ -16,6 +16,8 @@ namespace CShirts.Persistence.Models
 			this.store = store;
 		}
 
+		// persistence and business logic goes here
+
 		public async void DeleteAll()
 		{
 			// TODO: implement working delete statement
