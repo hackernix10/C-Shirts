@@ -1,9 +1,10 @@
 ﻿using System;
 using Nancy;
-using CShirtsNet.Models;
 using Nancy.ModelBinding;
+using CShirts.Web.Models;
+using CShirts.Persistence.Models;
 
-namespace CShirtsNet.Modules
+namespace CShirts.Web.Modules
 {
 	using CShirts.Persistence.Models;
 
@@ -26,14 +27,22 @@ namespace CShirtsNet.Modules
 				// TODO
 				// convert to view model
 				var tshirtsdto = new TShirtDTO();
-				tshirtsdto.Id = tshirts.Id; // use auto-mapper instead
+				tshirtsdto.Id = 1; // use auto-mapper instead
+				tshirtsdto.PrintTechnique = "screen";
+				tshirtsdto.Title = "demo shirt";
 
 				// TODO
 				// convert to json
-				var tshirtsAsJson;
+				var tshirtsAsJson = tshirtsdto;
+
+				TShirtDTO tshirt = new TShirtDTO();
+				tshirt.Id = 1;
+				tshirt.Title = "sample shirt";
+				tshirt.PrintTechnique = "screen";
 
 				// return json
-				return tshirtsAsJson;
+				return View["Index", tshirt];
+
 			};
 
 			Get["/create/"] = parameters => {
@@ -45,14 +54,26 @@ namespace CShirtsNet.Modules
 				// Also, I can call the create view, once I remove all @Model statements.
 				// I just figured out, passing an empty instance of the model works
 				// http://www.jhovgaard.com/from-aspnet-mvc-to-nancy-part-2/
-
+				var tshirt = new TShirtDTO();
 				return View ["Create", tshirt];
 			};
 
-			Post["/create/"] = paramters => {
-				var tshirt = this.Bind<TShirt>();
-				// Redirects the user to our Index action with a "status" value as a querystring.
-				return Response.AsRedirect("/?status=added&title=" + tshirt.Title);
+			Post["/create/"] = parameters => {
+
+				// bind json to dto
+				var tshirtDTO = this.Bind<TShirtDTO>();
+
+				// write dto data to tshirt object
+				var tshirt = new TShirt();
+				tshirt.Id = tshirtDTO.Id;
+				tshirt.PrintTechnique = tshirtDTO.PrintTechnique;
+				tshirt.Title = tshirtDTO.Title;
+
+				// persist tshirt object
+				tshirtRepository.Persist(tshirt);
+				
+				// Redirect user to Index action with a "status" value as a querystring
+				return Response.AsRedirect("");
 			};
 
 		}

@@ -1,17 +1,18 @@
 ﻿using Nancy;
-using CShirtsNet.Models;
+using CShirts.Web.Models;
 
-namespace CShirts.Modules.AdminModule
+namespace CShirts.Web.Modules
 {
 	public class AdminModule : NancyModule
 	{
 		public AdminModule(CreationTimeService webApplicationService) : base("/admin")
 		{
 			Get["/"] = parameters => {
-				var model = new CShirtsNet.Views.Admin.Models.IndexModel {
+				/*var model = new CShirts.Web.Views.Admin {
 					CreationDate = webApplicationService.GetCreationDate(),
 					TotalRequests = webApplicationService.TimesRequested()
-				};
+				};*/
+				var model = "";
 
 				return View["Index", model];
 			};

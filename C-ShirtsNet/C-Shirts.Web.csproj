@@ -86,8 +86,6 @@
   <ItemGroup>
     <Compile Include="Modules\HomeModule.cs" />
     <Compile Include="Models\CreationTimeService.cs" />
-    <Compile Include="Views\Admin\Models\IndexModel.cs" />
-    <Compile Include="Modules\AdminModule.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Models\TShirtDTO.cs" />
   </ItemGroup>
@@ -96,5 +94,9 @@
       <Project>{1EABBE1C-03DE-44EF-8A75-2324BB89EE4B}</Project>
       <Name>C-Shirts.Persistence</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Modules\AdminModule.cs" />
+    <None Include="Views\Admin\Models\IndexModel.cs" />
   </ItemGroup>
 </Project>

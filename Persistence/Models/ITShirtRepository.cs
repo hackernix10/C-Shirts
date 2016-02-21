@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CShirts.Persistence.Models
 {
@@ -6,7 +8,7 @@ namespace CShirts.Persistence.Models
 	{
 		void DeleteAll();
 
-		IENumerable<TShirt> GetAll();
+		Task<IEnumerable<TShirt>> GetAll();
 
 		void Persist(TShirt tshirt);
 	}

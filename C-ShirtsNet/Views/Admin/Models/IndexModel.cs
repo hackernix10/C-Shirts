@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CShirtsNet.Views.Admin.Models
+namespace CShirts.Web.Views.Admin.Models
 {
 	public class IndexModel
 	{

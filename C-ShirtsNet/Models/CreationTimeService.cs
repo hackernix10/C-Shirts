@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CShirtsNet.Models
+namespace CShirts.Web.Models
 {
 	public class CreationTimeService
 	{
