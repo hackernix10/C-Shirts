@@ -10,10 +10,6 @@ namespace CShirts.Persistence.Models
 	using MyCouch.Requests;
 	using MyCouch.Responses;
 
-	using System.Linq;
-	using System.Security.Claims;
-	//using Microsoft.AspNet.Identity;
-
 	public class CouchDbTShirtRepository : ITShirtRepository
 	{
 		private readonly List<TShirt> collection;
@@ -21,45 +17,40 @@ namespace CShirts.Persistence.Models
 
 		public CouchDbTShirtRepository (IMyCouchStore store)
 		{
-			// TODO:
-			// move to constructor and inject it through Autofac
-			this.store = store; //new MyCouchStore("http://seraya_dba:Pa$$w0rd@localhost:5984/","cshirts");
+			this.store = store;
 		}
 
-		// persistence and business logic goes here
+		// (persistence and business logic goes here)
 
 		public async void DeleteAll()
 		{
 			// TODO: implement working delete statement
-			// example taken from https://github.com/danielwertheim/mycouch
-
-			var deleted = await store.DeleteAsync("mySomething.Id", "mySomething.Rev");
-
 		}
 
 		public async Task<IEnumerable<TShirt>> GetAll()
 		{
-			ViewQueryResponse<TShirt[]> result;
-			
-			using (var client = new MyCouchClient("http://seraya_dba:password@127.0.0.1:5984/cshirts", null)) {
+			ViewQueryResponse<TShirt> result;
+			List<TShirt> tshirts = null;
+
+			// TODO: inject client or replace client with store
+			using (var client = new MyCouchClient("http://localhost:5984/cshirts", null)) {
 				var query = new QueryViewRequest("getAllTshirts");
-				result = await client.Views.QueryAsync<TShirt[]>(query);
+				result = await client.Views.QueryAsync<TShirt>(query);
 			}
 
-			// how tf is it possible to cast mycouch.row to tshirt?
-			var tshirts = new List<TShirt>();
-			tshirts.Add(new TShirt ());
-
-			Console.WriteLine ("::: ::: ::: ::: WRITING RESULT TO CONSOLE ::: ::: ::: :::");
-			Console.WriteLine (result);
-			Console.WriteLine ("::: ::: ::: ::: WROTE RESULT TO CONSOLE   ::: ::: ::: :::");
+			foreach (var row in result.Rows) {				
+				var tshirt = new TShirt ();
+				tshirt = row.Value;
+				tshirts.Add (tshirt);
+			}
 
 			return tshirts;
 		}
 
 		public async void Persist(TShirt tshirt)
 		{
-			//var mySomething = await store.StoreAsync(tshirt);
+			// TODO:
+			// replace stubed tshirt with actual one
 			var tshirtStub = new TShirt();
 			tshirtStub.Id = 5;
 			tshirtStub.PrintTechnique = "special technique";
@@ -67,10 +58,8 @@ namespace CShirts.Persistence.Models
 
 			using (var client = new MyCouchClient("http://localhost:5984/cshirts/", null)) {
 				var response = await client.Entities.PostAsync (tshirtStub);
-				Console.WriteLine (response);
+				Console.WriteLine (response); // TODO: remove WriteLine
 			}
-
-
 		}
 	}
 }

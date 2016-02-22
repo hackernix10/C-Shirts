@@ -7,6 +7,7 @@ using CShirts.Persistence.Models;
 namespace CShirts.Web.Modules
 {
 	using CShirts.Persistence.Models;
+	using System.Collections.Generic;
 
 	public class HomeModule : NancyModule
 	{
@@ -24,25 +25,30 @@ namespace CShirts.Web.Modules
 				// get "domain" obj
 				var tshirts = tshirtRepository.GetAll();
 
-				// TODO
-				// convert to view model
-				var tshirtsdto = new TShirtDTO();
-				tshirtsdto.Id = 1; // use auto-mapper instead
-				tshirtsdto.PrintTechnique = "screen";
-				tshirtsdto.Title = "demo shirt";
+				// prepare tshirtdto list
+				var tshirtdtos = new List<TShirtDTO>();
+
+				// convert to dto
+				// TOFIX: throws error:
+				// Error CS1579: foreach statement cannot operate on variables
+				// of type `System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<CShirts.Persistence.Models.TShirt>>'
+				// because it does not contain a definition for `GetEnumerator' or is inaccessible (CS1579) (C-Shirts.Web)
+				foreach (TShirt tshirt in tshirts)
+				{
+					var tshirtsdto = new TShirtDTO();
+					tshirtsdto.Id = tshirt.Id; // use auto-mapper instead
+					tshirtsdto.PrintTechnique = tshirt.PrintTechnique;
+					tshirtsdto.Title = tshirt.Title;
+					tshirtdtos.Add(tshirtsdto);
+				}
 
 				// TODO
 				// convert to json
-				var tshirtsAsJson = tshirtsdto;
+				//var tshirtsAsJson = tshirtsdto;
 
-				TShirtDTO tshirt = new TShirtDTO();
-				tshirt.Id = 1;
-				tshirt.Title = "sample shirt";
-				tshirt.PrintTechnique = "screen";
-
+				// TODO
 				// return json
-				return View["Index", tshirt];
-
+				return View["Index", tshirtdtos];
 			};
 
 			Get["/create/"] = parameters => {
