@@ -29,21 +29,24 @@ namespace CShirts.Persistence.Models
 
 		public async Task<IEnumerable<TShirt>> GetAll()
 		{
-			ViewQueryResponse<TShirt> result;
+			Task<ViewQueryResponse<TShirt>> tshirtTask;
+			ViewQueryResponse<TShirt> tshirtResult;
 			List<TShirt> tshirts = null;
 
 			// TODO: inject client or replace client with store
-			using (var client = new MyCouchClient("http://localhost:5984/cshirts", null)) {
+			using (var client = new MyCouchClient("http://localhost:5984", "cshirts")) {
 				var query = new QueryViewRequest("getAllTshirts");
-				result = await client.Views.QueryAsync<TShirt>(query);
+				tshirtTask = client.Views.QueryAsync<TShirt>(query);
 			}
 
-			foreach (var row in result.Rows) {				
+			tshirtResult = await tshirtTask;
+
+			foreach (var row in tshirtResult.Rows) {				
 				var tshirt = new TShirt ();
 				tshirt = row.Value;
 				tshirts.Add (tshirt);
 			}
-
+			Console.WriteLine (tshirts);
 			return tshirts;
 		}
 
@@ -56,7 +59,7 @@ namespace CShirts.Persistence.Models
 			tshirtStub.PrintTechnique = "special technique";
 			tshirtStub.Title = "stubed tshirt";
 
-			using (var client = new MyCouchClient("http://localhost:5984/cshirts/", null)) {
+			using (var client = new MyCouchClient("http://localhost:5984", "cshirts")) {
 				var response = await client.Entities.PostAsync (tshirtStub);
 				Console.WriteLine (response); // TODO: remove WriteLine
 			}

@@ -6,6 +6,7 @@ using CShirts.Persistence.Models;
 
 namespace CShirts.Web.Modules
 {
+	using System.Threading.Tasks;
 	using CShirts.Persistence.Models;
 	using System.Collections.Generic;
 
@@ -23,7 +24,10 @@ namespace CShirts.Web.Modules
 			Get["/tshirts"] = parameters => {
 
 				// get "domain" obj
-				var tshirts = tshirtRepository.GetAll();
+				IEnumerable<TShirt> tshirts = tshirtRepository.GetAll().Result;
+
+
+				//List<TShirt> tshirts = await getTshirtTask;
 
 				// prepare tshirtdto list
 				var tshirtdtos = new List<TShirtDTO>();
