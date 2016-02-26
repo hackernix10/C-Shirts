@@ -9,6 +9,7 @@ namespace CShirts.Persistence.Models
 		void DeleteAll();
 
 		Task<IEnumerable<TShirt>> GetAll();
+		Task<IEnumerable<TShirt>> GetAllMockedAsync();
 
 		void Persist(TShirt tshirt);
 	}

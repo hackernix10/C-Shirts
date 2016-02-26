@@ -21,10 +21,10 @@ namespace CShirts.Web.Modules
 			};
 
 			// return all tshirts
-			Get["/tshirts"] = parameters => {
+			Get["/tshirts", true] = async (x, ct) => {
 
 				// get "domain" obj
-				IEnumerable<TShirt> tshirts = tshirtRepository.GetAll().Result;
+				IEnumerable<TShirt> tshirts = await tshirtRepository.GetAllMockedAsync();
 
 
 				//List<TShirt> tshirts = await getTshirtTask;
@@ -39,11 +39,11 @@ namespace CShirts.Web.Modules
 				// because it does not contain a definition for `GetEnumerator' or is inaccessible (CS1579) (C-Shirts.Web)
 				foreach (TShirt tshirt in tshirts)
 				{
-					var tshirtsdto = new TShirtDTO();
-					tshirtsdto.Id = tshirt.Id; // use auto-mapper instead
-					tshirtsdto.PrintTechnique = tshirt.PrintTechnique;
-					tshirtsdto.Title = tshirt.Title;
-					tshirtdtos.Add(tshirtsdto);
+					var tshirtdto = new TShirtDTO();
+					tshirtdto.Id = tshirt.Id; // use auto-mapper instead
+					tshirtdto.PrintTechnique = tshirt.PrintTechnique;
+					tshirtdto.Title = tshirt.Title;
+					tshirtdtos.Add(tshirtdto);
 				}
 
 				// TODO
