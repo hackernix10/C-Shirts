@@ -42,6 +42,7 @@
     <Compile Include="Models\TShirt.cs" />
     <Compile Include="Models\CouchDbTShirtRepository.cs" />
     <Compile Include="Models\ITShirtRepository.cs" />
+    <Compile Include="Models\MockedTShirtRepository.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

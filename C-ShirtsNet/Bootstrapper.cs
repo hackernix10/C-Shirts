@@ -18,7 +18,8 @@ namespace CShirts.Web
 
 			// register interfaces/implementations
 			container.Update(builder => builder
-				.RegisterType<CouchDbTShirtRepository>()
+				//.RegisterType<CouchDbTShirtRepository>()
+				.RegisterType<MockedTShirtRepository>()
 				.As<ITShirtRepository>());
 
 			// register MyCouchStore parameter for couchdb repo classes

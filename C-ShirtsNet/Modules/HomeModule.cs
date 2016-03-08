@@ -24,7 +24,7 @@ namespace CShirts.Web.Modules
 			Get["/tshirts", true] = async (x, ct) => {
 
 				// get "domain" obj
-				IEnumerable<TShirt> tshirts = await tshirtRepository.GetAllMockedAsync();
+				IEnumerable<TShirt> tshirts = await tshirtRepository.GetAll();
 
 
 				//List<TShirt> tshirts = await getTshirtTask;

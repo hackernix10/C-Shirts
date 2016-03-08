@@ -23,9 +23,14 @@ namespace CShirts.Persistence.Models
 
 		// (persistence and business logic goes here)
 
-		public async void DeleteAll()
+		public async Task<bool> DeleteAll()
 		{
 			// TODO: implement working delete statement
+
+			await Task.Delay(100);
+
+			// TODO: if successfull
+			return true;
 		}
 
 		public async Task<IEnumerable<TShirt>> GetAll()
@@ -51,30 +56,7 @@ namespace CShirts.Persistence.Models
 			return tshirts;
 		}
 
-		public async Task<IEnumerable<TShirt>> GetAllMockedAsync() {
-			
-			Console.WriteLine ("starting some async task...");
-
-			Thread.Sleep (100);
-
-			var tshirt = new TShirt ();
-			tshirt.Id = 5;
-			tshirt.PrintTechnique = "some special technique";
-			tshirt.Title = "some sophisticated title";
-
-			var tshirt2 = new TShirt ();
-			tshirt2.Id = 6;
-			tshirt2.PrintTechnique = "screen print";
-			tshirt2.Title = "tell your story";
-
-			var tshirts = new List<TShirt>();
-			tshirts.Add (tshirt);
-			tshirts.Add (tshirt2);
-
-			return tshirts;
-		}
-
-		public async void Persist(TShirt tshirt)
+		public async Task<TShirt> Persist(TShirt tshirt)
 		{
 			// TODO:
 			// replace stubed tshirt with actual one
@@ -87,6 +69,9 @@ namespace CShirts.Persistence.Models
 				var response = await client.Entities.PostAsync (tshirtStub);
 				Console.WriteLine (response); // TODO: remove WriteLine
 			}
+
+			// TODO: if successfull
+			return tshirtStub;
 		}
 	}
 }
