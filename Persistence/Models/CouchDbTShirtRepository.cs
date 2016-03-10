@@ -21,18 +21,6 @@ namespace CShirts.Persistence.Models
 			this.store = store;
 		}
 
-		// (persistence and business logic goes here)
-
-		public async Task<bool> DeleteAll()
-		{
-			// TODO: implement working delete statement
-
-			await Task.Delay(100);
-
-			// TODO: if successfull
-			return true;
-		}
-
 		public async Task<IEnumerable<TShirt>> GetAll()
 		{
 			Task<ViewQueryResponse<TShirt>> tshirtTask;
@@ -56,6 +44,19 @@ namespace CShirts.Persistence.Models
 			return tshirts;
 		}
 
+		public async Task<TShirt> Get(int id)
+		{
+			// TODO: replace with actual implementation
+			var tshirt = new TShirt();
+			tshirt.Id = id;
+			tshirt.PrintTechnique = "Print technique #" + id.ToString();
+			tshirt.Title = "Tshirt #" + id.ToString ();
+
+			await Task.Delay(100);
+
+			return tshirt;
+		}
+
 		public async Task<TShirt> Persist(TShirt tshirt)
 		{
 			// TODO:
@@ -72,6 +73,26 @@ namespace CShirts.Persistence.Models
 
 			// TODO: if successfull
 			return tshirtStub;
+		}
+
+		public async Task<TShirt> Edit(TShirt tshirt)
+		{
+			// TODO: implement actual implementation
+
+			await Task.Delay(100);
+
+			// TODO: if successfull
+			return tshirt;
+		}
+
+		public async Task<bool> Delete(int id)
+		{
+			// TODO: implement working delete statement
+
+			await Task.Delay(100);
+
+			// TODO: if successfull
+			return true;
 		}
 	}
 }

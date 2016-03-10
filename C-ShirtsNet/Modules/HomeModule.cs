@@ -3,6 +3,7 @@ using Nancy;
 using Nancy.ModelBinding;
 using CShirts.Web.Models;
 using CShirts.Persistence.Models;
+using Newtonsoft.Json;
 
 namespace CShirts.Web.Modules
 {
@@ -26,17 +27,10 @@ namespace CShirts.Web.Modules
 				// get "domain" obj
 				IEnumerable<TShirt> tshirts = await tshirtRepository.GetAll();
 
-
-				//List<TShirt> tshirts = await getTshirtTask;
-
 				// prepare tshirtdto list
 				var tshirtdtos = new List<TShirtDTO>();
 
 				// convert to dto
-				// TOFIX: throws error:
-				// Error CS1579: foreach statement cannot operate on variables
-				// of type `System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<CShirts.Persistence.Models.TShirt>>'
-				// because it does not contain a definition for `GetEnumerator' or is inaccessible (CS1579) (C-Shirts.Web)
 				foreach (TShirt tshirt in tshirts)
 				{
 					var tshirtdto = new TShirtDTO();
@@ -46,16 +40,17 @@ namespace CShirts.Web.Modules
 					tshirtdtos.Add(tshirtdto);
 				}
 
-				// TODO
 				// convert to json
-				//var tshirtsAsJson = tshirtsdto;
+				var tshirtsAsJson = JsonConvert.SerializeObject(tshirtdtos);
 
-				// TODO
-				// return json
-				return View["Index", tshirtdtos];
+				// prepare json
+				var response = (Response)tshirtsAsJson;
+				response.ContentType = "application/json";
+
+				return response;
 			};
 
-			Get["/create/"] = parameters => {
+			Get["/tshirt/create/"] = parameters => {
 				
 				// TODO: find a solution to remove the instance, must have to do with razor..
 				// stack trace: I have a create form, which should be bound to a specific model
@@ -65,10 +60,11 @@ namespace CShirts.Web.Modules
 				// I just figured out, passing an empty instance of the model works
 				// http://www.jhovgaard.com/from-aspnet-mvc-to-nancy-part-2/
 				var tshirt = new TShirtDTO();
-				return View ["Create", tshirt];
+
+				return tshirt;
 			};
 
-			Post["/create/"] = parameters => {
+			Post["/tshirt/create/", true] = async (x, ct) => {
 
 				// bind json to dto
 				var tshirtDTO = this.Bind<TShirtDTO>();
@@ -80,10 +76,47 @@ namespace CShirts.Web.Modules
 				tshirt.Title = tshirtDTO.Title;
 
 				// persist tshirt object
-				tshirtRepository.Persist(tshirt);
+				var result = await tshirtRepository.Persist(tshirt);
 				
+				return result;
 				// Redirect user to Index action with a "status" value as a querystring
-				return Response.AsRedirect("");
+				// return Response.AsRedirect("");
+			};
+
+			Get ["/tshirt/{id}", true] = async (x, ct) => {
+				
+				var tshirt = await tshirtRepository.Get(x.id);
+
+				var tshirtDTO = new TShirt();
+				tshirtDTO.Id = tshirt.Id;
+				tshirtDTO.PrintTechnique = tshirt.PrintTechnique;
+				tshirtDTO.Title = tshirt.Title;
+
+				// convert to json
+				var tshirtAsJson = JsonConvert.SerializeObject(tshirtDTO);
+
+				// prepare json
+				var response = (Response)tshirtAsJson;
+				response.ContentType = "application/json";
+
+				return response;
+			};
+
+			Post ["/tshirt/{id}/edit", true] = async (x, ct) => {
+				var tshirtDTO = this.Bind<TShirtDTO>();
+
+				var tshirt = new TShirt();
+				tshirt.Id = tshirtDTO.Id;
+				tshirt.PrintTechnique = tshirtDTO.PrintTechnique;
+				tshirt.Title = tshirtDTO.Title;
+
+				var response = await tshirtRepository.Edit(tshirt);
+				return response;
+			};
+
+			Post ["/tshirt/{id}/delete", true] = async (x, ct) => {
+				var response = await tshirtRepository.Delete(x.id);
+				return response;
 			};
 
 		}

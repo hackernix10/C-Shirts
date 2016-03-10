@@ -6,13 +6,6 @@ namespace CShirts.Persistence.Models
 {
 	public class MockedTShirtRepository : ITShirtRepository
 	{
-		public async Task<bool> DeleteAll() {
-			
-			await Task.Delay(100);
-
-			return true;
-		}
-
 		public async Task<IEnumerable<TShirt>> GetAll() {
 			Console.WriteLine ("starting some async task...");
 
@@ -36,12 +29,39 @@ namespace CShirts.Persistence.Models
 			return tshirts;
 		}
 
+		public async Task<TShirt> Get(int id)
+		{
+			var tshirt = new TShirt ();
+			tshirt.Id = id;
+			tshirt.PrintTechnique = "Print technique #" +id.ToString();
+			tshirt.Title = "Title #" + id.ToString();
+
+			await Task.Delay (100);
+
+			return tshirt;
+		}
+
 		public async Task<TShirt> Persist(TShirt tshirt) {
-			
+
 			await Task.Delay(100);
 
 			return tshirt;	
 		}
+
+		public async Task<TShirt> Edit(TShirt tshirt) {
+
+			await Task.Delay(100);
+
+			return tshirt;
+		}
+
+		public async Task<bool> Delete(int id) {
+
+			await Task.Delay(100);
+
+			return true;
+		}
+
 	}
 }
 
