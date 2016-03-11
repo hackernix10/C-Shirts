@@ -83,7 +83,7 @@ export class AppComponent implements OnInit {
     onSelect(tshirt: Tshirt) { this.selectedTshirt = tshirt; }
     
     getTshirts() {
-        this.tshirts = this._tshirtService.getTshirts();
+        this._tshirtService.getTshirts().then(tshirts => this.tshirts = tshirts);
     }
     
     ngOnInit() {

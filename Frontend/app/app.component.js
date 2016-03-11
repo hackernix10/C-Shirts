@@ -33,7 +33,8 @@ System.register(['angular2/core', './tshirt.service', './tshirt-detail.component
                 }
                 AppComponent.prototype.onSelect = function (tshirt) { this.selectedTshirt = tshirt; };
                 AppComponent.prototype.getTshirts = function () {
-                    this.tshirts = this._tshirtService.getTshirts();
+                    var _this = this;
+                    this._tshirtService.getTshirts().then(function (tshirts) { return _this.tshirts = tshirts; });
                 };
                 AppComponent.prototype.ngOnInit = function () {
                     this.getTshirts();

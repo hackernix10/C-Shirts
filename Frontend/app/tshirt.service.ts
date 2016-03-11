@@ -7,6 +7,6 @@ import {Injectable} from 'angular2/core';
 @Injectable()
 export class TshirtService {
     getTshirts() {
-        return TSHIRTS;
+        return Promise.resolve(TSHIRTS);
     }        
 }

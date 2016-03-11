@@ -28,7 +28,7 @@ System.register(['./mock-tshirts', 'angular2/core'], function(exports_1, context
                 function TshirtService() {
                 }
                 TshirtService.prototype.getTshirts = function () {
-                    return mock_tshirts_1.TSHIRTS;
+                    return Promise.resolve(mock_tshirts_1.TSHIRTS);
                 };
                 TshirtService = __decorate([
                     core_1.Injectable(), 
