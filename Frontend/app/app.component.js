@@ -31,7 +31,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n        <h1>{{title}}</h1>\n        <h2>{{tshirt.title}} details!</h2>\n        <div><label>id: </label>{{tshirt.id}}</div>\n        <div><label>title: </label>{{tshirt.title}}</div>\n        <div><label>print technique: </label>{{tshirt.printTechnique}}</div>\n        "
+                        template: "\n        <h1>{{title}}</h1>\n        <h2>{{tshirt.title}} details!</h2>\n        <div><label>id: </label>{{tshirt.id}}</div>\n        <div>\n            <label>title: </label>\n            <div><input [(ngModel)]=\"tshirt.title\" placeholder=\"name\"></div>\n        </div>\n        <div>\n            <label>print technique: </label>\n            <div><input value=\"{{tshirt.printTechnique}}\" placeholder=\"printTechnique\"></div>\n        </div>\n        "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

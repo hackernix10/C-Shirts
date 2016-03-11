@@ -7,8 +7,14 @@ import {Component} from 'angular2/core';
         <h1>{{title}}</h1>
         <h2>{{tshirt.title}} details!</h2>
         <div><label>id: </label>{{tshirt.id}}</div>
-        <div><label>title: </label>{{tshirt.title}}</div>
-        <div><label>print technique: </label>{{tshirt.printTechnique}}</div>
+        <div>
+            <label>title: </label>
+            <div><input [(ngModel)]="tshirt.title" placeholder="name"></div>
+        </div>
+        <div>
+            <label>print technique: </label>
+            <div><input value="{{tshirt.printTechnique}}" placeholder="printTechnique"></div>
+        </div>
         `
 })
 export class AppComponent {
