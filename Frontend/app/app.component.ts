@@ -1,6 +1,9 @@
 import {Component} from 'angular2/core';
-import {TShirt} from './tshirt';
-import {TShirtDetailComponent} from './tshirt-detail.component';
+import {OnInit} from 'angular2/core';
+
+import {TshirtService} from './tshirt.service';
+import {Tshirt} from './tshirt';
+import {TshirtDetailComponent} from './tshirt-detail.component';
 
 // creating a visual component 'AppComponent'
 @Component({
@@ -10,10 +13,12 @@ import {TShirtDetailComponent} from './tshirt-detail.component';
         <h2>My T-Shirts</h2>
         <ul class="heroes">
             <li *ngFor="#tshirt of tshirts"
+            [class.selected]="tshirt === selectedTshirt"
             (click)="onSelect(tshirt)">
                 <span class="badge">{{tshirt.id}}</span> {{tshirt.title}}
             </li>
         </ul>
+        <my-tshirt-detail [tshirt]="selectedTshirt"></my-tshirt-detail>
         `,
     styles:[`
         .selected {
@@ -63,19 +68,25 @@ import {TShirtDetailComponent} from './tshirt-detail.component';
             margin-right: .8em;
             border-radius: 4px 0 0 4px;
         }
-        `],
+    `],
+    directives: [TshirtDetailComponent],
+    providers: [TshirtService] // register services to be injected
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     title = 'Custom T-Shirts';
-    tshirts = TSHIRTS;  
-    selectedTShirt: TShirt;
-    
-    onSelect(tshirt: TShirt) { this.selectedTShirt = tshirt; }
-}
+    tshirts: Tshirt[];  
+    selectedTshirt: Tshirt;
+       
+    // _ := this variable is not part of the component's public API
+    constructor(private _tshirtService: TshirtService) {}
 
-var TSHIRTS: TShirt[] = [
-    {"id": 1, "title": "tell your story", "printTechnique": "Screening"},
-    {"id": 2, "title": "ZRK", "printTechnique": "Sublimation"},
-    {"id": 3, "title": "IAZ", "printTechnique": "DOG Print"},
-    {"id": 4, "title": "Zara black", "printTechnique": "Screening"}
-];
+    onSelect(tshirt: Tshirt) { this.selectedTshirt = tshirt; }
+    
+    getTshirts() {
+        this.tshirts = this._tshirtService.getTshirts();
+    }
+    
+    ngOnInit() {
+        this.getTshirts();
+    }
+}
