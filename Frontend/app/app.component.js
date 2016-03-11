@@ -21,11 +21,17 @@ System.register(['angular2/core'], function(exports_1, context_1) {
             // creating a visual component 'AppComponent'
             AppComponent = (function () {
                 function AppComponent() {
+                    this.title = 'Custom T-Shirts';
+                    this.tshirt = {
+                        id: 1,
+                        title: 'tell your story',
+                        printTechnique: 'screening'
+                    };
                 }
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: '<h1>My First Angular 2 App</h1>'
+                        template: "\n        <h1>{{title}}</h1>\n        <h2>{{tshirt.title}} details!</h2>\n        <div><label>id: </label>{{tshirt.id}}</div>\n        <div><label>title: </label>{{tshirt.title}}</div>\n        <div><label>print technique: </label>{{tshirt.printTechnique}}</div>\n        "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
