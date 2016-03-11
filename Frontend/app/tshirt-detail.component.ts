@@ -1,10 +1,10 @@
 import {Component} from 'angular2/core';
-import {TShirt} from './tshirt';
+import {Tshirt} from './tshirt';
 
 @Component({
   selector: 'my-tshirt-detail',
   template: `
-    <div>
+    <div *ngIf="tshirt">
         <h2>{{tshirt.title}} details!</h2>
         <div><label>id: </label>{{tshirt.id}}</div>
         <div>
@@ -19,6 +19,6 @@ import {TShirt} from './tshirt';
   `,
   inputs: ['tshirt']
 })
-export class TShirtDetailComponent {
-    tshirt: TShirt;
+export class TshirtDetailComponent {
+    tshirt: Tshirt;
 }

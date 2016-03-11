@@ -10,12 +10,10 @@ import {TShirtDetailComponent} from './tshirt-detail.component';
         <h2>My T-Shirts</h2>
         <ul class="heroes">
             <li *ngFor="#tshirt of tshirts"
-            [class.selected]="tshirt === selectedTShirt"
             (click)="onSelect(tshirt)">
                 <span class="badge">{{tshirt.id}}</span> {{tshirt.title}}
             </li>
         </ul>
-        <my-tshirt-detail [tshirt]="selectedTShirt"></my-tshirt-detail>      
         `,
     styles:[`
         .selected {
@@ -66,7 +64,6 @@ import {TShirtDetailComponent} from './tshirt-detail.component';
             border-radius: 4px 0 0 4px;
         }
         `],
-        directives: [TShirtDetailComponent]
 })
 export class AppComponent {
     title = 'Custom T-Shirts';

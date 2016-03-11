@@ -11,27 +11,27 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var TShirtDetailComponent;
+    var TshirtDetailComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            TShirtDetailComponent = (function () {
-                function TShirtDetailComponent() {
+            TshirtDetailComponent = (function () {
+                function TshirtDetailComponent() {
                 }
-                TShirtDetailComponent = __decorate([
+                TshirtDetailComponent = __decorate([
                     core_1.Component({
                         selector: 'my-tshirt-detail',
-                        template: "\n    <div>\n        <h2>{{tshirt.title}} details!</h2>\n        <div><label>id: </label>{{tshirt.id}}</div>\n        <div>\n            <label>title: </label>\n            <div><input [(ngModel)]=\"tshirt.title\" placeholder=\"title\"></div>\n        </div>\n        <div>\n            <label>print technique: </label>\n            <div><input [(ngModel)]=\"tshirt.printTechnique\" placeholder=\"printTechnique\"></div>\n        </div>\n    </div>\n  ",
+                        template: "\n    <div *ngIf=\"tshirt\">\n        <h2>{{tshirt.title}} details!</h2>\n        <div><label>id: </label>{{tshirt.id}}</div>\n        <div>\n            <label>title: </label>\n            <div><input [(ngModel)]=\"tshirt.title\" placeholder=\"title\"></div>\n        </div>\n        <div>\n            <label>print technique: </label>\n            <div><input [(ngModel)]=\"tshirt.printTechnique\" placeholder=\"printTechnique\"></div>\n        </div>\n    </div>\n  ",
                         inputs: ['tshirt']
                     }), 
                     __metadata('design:paramtypes', [])
-                ], TShirtDetailComponent);
-                return TShirtDetailComponent;
+                ], TshirtDetailComponent);
+                return TshirtDetailComponent;
             }());
-            exports_1("TShirtDetailComponent", TShirtDetailComponent);
+            exports_1("TshirtDetailComponent", TshirtDetailComponent);
         }
     }
 });
