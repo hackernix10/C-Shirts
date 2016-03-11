@@ -18,14 +18,9 @@
     <!-- 2. Configure SystemJS -->
     <script>
       System.config({
-        // packages node tells SystemJS what to do when
-        // it sees a request for a module from the app/ folder
-        packages: {        
-          app: {
-            format: 'register',
-            defaultExtension: 'js'
-          }
-        }
+        transpiler: 'typescript', 
+        typescriptOptions: { emitDecoratorMetadata: true }, 
+        packages: {'app': {defaultExtension: 'ts'}} 
       });
       System.import('app/main')
         .then(null, console.error.bind(console));

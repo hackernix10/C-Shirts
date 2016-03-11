@@ -1,10 +1,6 @@
 import {Component} from 'angular2/core';
-
-interface TShirt {
-    id: number;
-    title: string;
-    printTechnique: string;
-}
+import {TShirt} from './tshirt';
+import {TShirtDetailComponent} from './tshirt-detail.component';
 
 // creating a visual component 'AppComponent'
 @Component({
@@ -19,18 +15,7 @@ interface TShirt {
                 <span class="badge">{{tshirt.id}}</span> {{tshirt.title}}
             </li>
         </ul>
-        <div *ngIf="selectedTShirt">
-            <h2>{{selectedTShirt.title}} details!</h2>
-            <div><label>id: </label>{{selectedTShirt.id}}</div>
-            <div>
-                <label>title: </label>
-                <div><input [(ngModel)]="selectedTShirt.title" placeholder="name"></div>
-            </div>
-            <div>
-                <label>print technique: </label>
-                <div><input value="{{selectedTShirt.printTechnique}}" placeholder="printTechnique"></div>
-            </div>
-        </div>
+        <my-tshirt-detail [tshirt]="selectedTShirt"></my-tshirt-detail>      
         `,
     styles:[`
         .selected {
@@ -80,17 +65,20 @@ interface TShirt {
             margin-right: .8em;
             border-radius: 4px 0 0 4px;
         }
-        `]
+        `],
+        directives: [TShirtDetailComponent]
 })
 export class AppComponent {
     title = 'Custom T-Shirts';
-    tshirts:  TShirt[] = [
-        {"id": 1, "title": "tell your story", "printTechnique": "Screening"},
-        {"id": 2, "title": "ZRK", "printTechnique": "Sublimation"},
-        {"id": 3, "title": "IAZ", "printTechnique": "DOG Print"},
-        {"id": 4, "title": "Zara black", "printTechnique": "Screening"}
-    ];
+    tshirts = TSHIRTS;  
     selectedTShirt: TShirt;
     
     onSelect(tshirt: TShirt) { this.selectedTShirt = tshirt; }
 }
+
+var TSHIRTS: TShirt[] = [
+    {"id": 1, "title": "tell your story", "printTechnique": "Screening"},
+    {"id": 2, "title": "ZRK", "printTechnique": "Sublimation"},
+    {"id": 3, "title": "IAZ", "printTechnique": "DOG Print"},
+    {"id": 4, "title": "Zara black", "printTechnique": "Screening"}
+];
