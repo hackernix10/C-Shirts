@@ -18,7 +18,7 @@ namespace CShirts.Web.Modules
 			
 			// global index view
 			Get["/"] = parameters => {
-				return View["Index"];
+				return View["Index.html"];
 			};
 
 			// return all tshirts
